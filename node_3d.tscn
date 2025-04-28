@@ -67,10 +67,6 @@ mesh = SubResource("BoxMesh_6iypd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3/bounce"]
 shape = SubResource("BoxShape3D_4arys")
 
-[node name="RigidBody3D2" parent="." instance=ExtResource("9_4arys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.35666, 0.0749998, -5.33768)
-angular_damp = 0.0
-
 [node name="Ramp" parent="." instance=ExtResource("10_6iypd")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.67376, -6.79109, 8.60111)
 
@@ -78,6 +74,12 @@ transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.673
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -0.880681, -0.183716, 35.7212)
 
 [node name="Map" parent="." instance=ExtResource("5_jka67")]
+metadata/size = 100
 
 [node name="RigidBody3D" parent="." instance=ExtResource("10_tereu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0859025, 0.0749998, -5.21242)
+center_of_mass = Vector3(0, 0, 0)
+
+[node name="RigidBody3D2" parent="." instance=ExtResource("9_4arys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75333, 0.0749998, -2.5099)
+angular_damp = 0.0

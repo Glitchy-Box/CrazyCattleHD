@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckk7gi2eovncl"]
+[gd_scene load_steps=9 format=3 uid="uid://ckk7gi2eovncl"]
 
 [ext_resource type="Script" uid="uid://c2spcep75dt3t" path="res://npsheep.gd" id="1_yu33d"]
 [ext_resource type="PackedScene" uid="uid://da1hy5war6bcy" path="res://sheep.glb" id="2_gvj8y"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4aphl"]
+friction = 1.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6iypd"]
 size = Vector3(0.803245, 0.529725, 0.669561)
@@ -20,6 +23,7 @@ size = Vector3(0.152832, 0.568481, 0.206573)
 
 [node name="RigidBody3D" type="RigidBody3D"]
 mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_4aphl")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 0.2, 0)
 angular_damp = 1.0
@@ -30,7 +34,7 @@ script = ExtResource("1_yu33d")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00512993, 1.57559, 1.09501)
+transform = Transform3D(1, 0, 0, 0, 0.783596, -0.621271, 0, 0.621271, 0.783596, -0.00512993, 1.42294, 1.09501)
 shape = SubResource("BoxShape3D_6iypd")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
