@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://bx47twud8sb7o"]
+
+[ext_resource type="Script" uid="uid://ct0k5q4yg4327" path="res://controls.gd" id="1_f22vm"]
+[ext_resource type="Script" uid="uid://cngibsw6agqa3" path="res://camera-mouse.gd" id="2_tjq3d"]
+[ext_resource type="Script" uid="uid://c8ctwn37wpaqs" path="res://fps_indicator_test.gd" id="3_5vbuh"]
+[ext_resource type="PackedScene" uid="uid://da1hy5war6bcy" path="res://sheep.glb" id="4_pyq0v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i5arm"]
+font_size = 32
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hqtel"]
+size = Vector3(1, 1.78912, 2.40533)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+mass = 15.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.15, 0)
+angular_damp_mode = 1
+angular_damp = 1.5
+constant_torque = Vector3(0, 10, 0)
+script = ExtResource("1_f22vm")
+metadata/modifier = 0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.8, -1.8)
+script = ExtResource("2_tjq3d")
+metadata/canmove = true
+
+[node name="Label" type="Label" parent="Camera3D"]
+offset_right = 295.0
+offset_bottom = 30.0
+text = "Crazy Cattle 3d Test C
+Pre-Alpha"
+label_settings = SubResource("LabelSettings_i5arm")
+
+[node name="Label2" type="Label" parent="Camera3D"]
+offset_left = 838.0
+offset_top = 597.0
+offset_right = 1133.0
+offset_bottom = 632.0
+text = "This Feature is not supported"
+label_settings = SubResource("LabelSettings_i5arm")
+script = ExtResource("3_5vbuh")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("4_pyq0v")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.948334, 0.18808)
+shape = SubResource("BoxShape3D_hqtel")
+
+[node name="player" type="Area3D" parent="."]
+angular_damp = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.948334, 0.18808)
+shape = SubResource("BoxShape3D_hqtel")
+
+[connection signal="area_entered" from="player" to="." method="_on_player_area_entered"]

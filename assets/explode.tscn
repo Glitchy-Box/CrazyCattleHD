@@ -1,0 +1,66 @@
+[gd_scene load_steps=15 format=3 uid="uid://co8q8v4kfpf76"]
+
+[ext_resource type="Script" uid="uid://beps34t8dxplb" path="res://explode.gd" id="1_6nmrb"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cdqbm"]
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+
+[sub_resource type="Gradient" id="Gradient_imku0"]
+colors = PackedColorArray(0.849189, 0.368235, 0, 1, 0.680605, 0.490382, 0.30604, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wlxy5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3v7ru"]
+color_ramp = SubResource("Gradient_imku0")
+noise = SubResource("FastNoiseLite_wlxy5")
+
+[sub_resource type="Gradient" id="Gradient_tcnuu"]
+colors = PackedColorArray(0.783419, 0.239159, 0.035911, 1, 0.762011, 0.631011, 7.70092e-07, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tuemg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i0g27"]
+color_ramp = SubResource("Gradient_tcnuu")
+noise = SubResource("FastNoiseLite_tuemg")
+
+[sub_resource type="Gradient" id="Gradient_ealrb"]
+offsets = PackedFloat32Array(0, 0.809969, 1)
+colors = PackedColorArray(0.714553, 0.317334, 3.85046e-07, 1, 0.751901, 0.275814, 3.34666e-07, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jsnrv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lggff"]
+color_ramp = SubResource("Gradient_ealrb")
+noise = SubResource("FastNoiseLite_jsnrv")
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_s0gvp"]
+frames = 3
+speed_scale = 0.8
+frame_0/texture = SubResource("NoiseTexture2D_3v7ru")
+frame_0/duration = 0.1
+frame_1/texture = SubResource("NoiseTexture2D_i0g27")
+frame_1/duration = 0.1
+frame_2/texture = SubResource("NoiseTexture2D_lggff")
+frame_2/duration = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxd74"]
+albedo_texture = SubResource("AnimatedTexture_s0gvp")
+emission_enabled = true
+emission = Color(0.842776, 0.379014, 0, 1)
+emission_energy_multiplier = 0.5
+emission_operator = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_dhlwf"]
+material = SubResource("StandardMaterial3D_vxd74")
+radius = 0.1
+height = 0.2
+
+[node name="explode" type="GPUParticles3D"]
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_cdqbm")
+draw_pass_1 = SubResource("SphereMesh_dhlwf")
+script = ExtResource("1_6nmrb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]

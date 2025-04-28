@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjcrsqr7uqyry"]
+
+[ext_resource type="Script" uid="uid://bgkojytes13xk" path="res://assets/map.gd" id="1_4jj7h"]
+[ext_resource type="ArrayMesh" uid="uid://cgagjvrv45fv1" path="res://fence-v1-note.obj" id="2_i0kr6"]
+[ext_resource type="Script" uid="uid://dggvfr34xf24s" path="res://fence.gd" id="3_uxcmc"]
+[ext_resource type="Texture2D" uid="uid://ri3w1f5ip31v" path="res://floor-dev.svg" id="4_hn84o"]
+[ext_resource type="Texture2D" uid="uid://ci4d0eqtm13xm" path="res://floor-greyscale.svg" id="5_ide2h"]
+[ext_resource type="Script" uid="uid://boqdk4yliwvl8" path="res://ground_generate.gd" id="6_41ap8"]
+[ext_resource type="ArrayMesh" uid="uid://d13nvglfcw7vp" path="res://grass_1.obj" id="7_lmjdv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qtssc"]
+size = Vector3(20, 0.15, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_847p8"]
+albedo_texture = ExtResource("4_hn84o")
+roughness_texture = ExtResource("5_ide2h")
+roughness_texture_channel = 4
+normal_scale = -13.38
+normal_texture = ExtResource("5_ide2h")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("5_ide2h")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hbpr4"]
+size = Vector2(20, 20)
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_4jj7h")
+metadata/size = 50
+
+[node name="container" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10, 0, -10)
+skeleton = NodePath("Fence-v1-note")
+
+[node name="Fence-v1-note" type="MeshInstance3D" parent="container"]
+mesh = ExtResource("2_i0kr6")
+skeleton = NodePath("../..")
+script = ExtResource("3_uxcmc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_qtssc")
+
+[node name="ground" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_847p8")
+mesh = SubResource("PlaneMesh_hbpr4")
+skeleton = NodePath("../..")
+script = ExtResource("6_41ap8")
+
+[node name="root_grass" type="MeshInstance3D" parent="StaticBody3D/ground"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.0774877, 0)
+lod_bias = 0.001
+mesh = ExtResource("7_lmjdv")
