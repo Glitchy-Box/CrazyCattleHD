@@ -19,10 +19,10 @@ func _process(delta: float) -> void:
 		self.queue_free()
 		
 	if Input.is_action_pressed('ui_up'):
-		self.apply_force(global_transform.basis * Vector3(0,0,100.0))
+		self.apply_impulse(global_transform.basis * Vector3(0,0,5.0))
 		#linear_velocity = global_transform.basis * Vector3(0,0,10.0)
 	if Input.is_action_pressed('ui_down'):
-		self.apply_force(global_transform.basis * Vector3(0,0,-100.0))
+		self.apply_impulse(global_transform.basis * Vector3(0,0,-5.0))
 	if Input.is_action_pressed('ui_left'):
 		self.angular_velocity.y = 0.1 * linear_velocity.length()
 	if Input.is_action_pressed('ui_right'):

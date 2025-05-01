@@ -1,0 +1,459 @@
+[gd_scene load_steps=11 format=3 uid="uid://d2m70h7kglkuj"]
+
+[ext_resource type="Script" uid="uid://d1hbd2inwmf46" path="res://cc3dm.gd" id="1_8xi7s"]
+[ext_resource type="PackedScene" uid="uid://c8fhsisy8tfpd" path="res://assets/ramp.tscn" id="2_8cely"]
+[ext_resource type="PackedScene" uid="uid://cjcrsqr7uqyry" path="res://assets/map.tscn" id="3_chg0e"]
+[ext_resource type="PackedScene" uid="uid://ckk7gi2eovncl" path="res://npsheep.tscn" id="5_hc77w"]
+
+[sub_resource type="Gradient" id="Gradient_noarx"]
+offsets = PackedFloat32Array(0.641509, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a0tk4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r3fl7"]
+seamless = true
+color_ramp = SubResource("Gradient_noarx")
+noise = SubResource("FastNoiseLite_a0tk4")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a0tk4"]
+sky_top_color = Color(0.6336, 0.80586, 0.99, 1)
+sky_cover = SubResource("NoiseTexture2D_r3fl7")
+
+[sub_resource type="Sky" id="Sky_r3fl7"]
+sky_material = SubResource("ProceduralSkyMaterial_a0tk4")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_jka67"]
+background_mode = 2
+sky = SubResource("Sky_r3fl7")
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_8xi7s")
+metadata/size = 50
+metadata/info = {
+"version": "Graphics Pre-Alpha"
+}
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.828207, -0.278889, 0.486101, 1.80338e-08, 0.867384, 0.49764, -0.560422, 0.412149, -0.718373, 2.50573, 1.53688, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jka67")
+
+[node name="Ramp" parent="." instance=ExtResource("2_8cely")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.67376, -6.79109, 8.60111)
+
+[node name="Ramp2" parent="." instance=ExtResource("2_8cely")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -0.880681, -0.183716, 35.7212)
+
+[node name="Map" parent="." instance=ExtResource("3_chg0e")]
+metadata/size = 500
+metadata/amount = 1
+
+[node name="player_sh" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75333, 0.0749998, -2.5099)
+angular_damp = 0.0
+
+[node name="stress_sh2" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.72393, 0.0749998, -2.5099)
+angular_damp = 0.0
+
+[node name="stress_sh3" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2503, 0.0749998, -2.5099)
+angular_damp = 0.0
+
+[node name="stress_sh4" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1387, 0.0749998, -2.5099)
+angular_damp = 0.0
+
+[node name="stress_sh5" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.2787, 0.0749998, -2.5099)
+angular_damp = 0.0
+
+[node name="stress_sh6" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.81443, 0.0749998, -7.05744)
+angular_damp = 0.0
+
+[node name="stress_sh7" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.785, 0.0749998, -7.05744)
+angular_damp = 0.0
+
+[node name="stress_sh8" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.5818, 0.0749998, -7.05744)
+angular_damp = 0.0
+
+[node name="stress_sh9" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1998, 0.0749998, -7.05744)
+angular_damp = 0.0
+
+[node name="stress_sh10" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.2176, 0.0749998, -7.05744)
+angular_damp = 0.0
+
+[node name="stress_sh11" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 1.58011, 0.0749998, -74.5243)
+angular_damp = 0.0
+
+[node name="stress_sh12" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 3.40945, 0.0749998, -73.7916)
+angular_damp = 0.0
+
+[node name="stress_sh13" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 5.75477, 0.0749998, -72.8523)
+angular_damp = 0.0
+
+[node name="stress_sh14" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 4.72284, 0.0749998, -73.2656)
+angular_damp = 0.0
+
+[node name="stress_sh15" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 7.02124, 0.0749998, -72.3451)
+angular_damp = 0.0
+
+[node name="stress_sh16" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 0.874416, 0.0749998, -69.9082)
+angular_damp = 0.0
+
+[node name="stress_sh17" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 2.70376, 0.0749998, -69.1755)
+angular_damp = 0.0
+
+[node name="stress_sh18" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 5.04907, 0.0749998, -68.2363)
+angular_damp = 0.0
+
+[node name="stress_sh19" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 4.01714, 0.0749998, -68.6495)
+angular_damp = 0.0
+
+[node name="stress_sh20" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.514724, 0, -0.857356, 0, 1, 0, 0.857356, 0, -0.514724, 7.58198, 0.0749998, -63.9654)
+angular_damp = 0.0
+
+[node name="stress_sh21" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 8.28771, 0.0749998, -71.8379)
+angular_damp = 0.0
+
+[node name="stress_sh22" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 24.8963, 0.0749998, 17.8924)
+angular_damp = 0.0
+
+[node name="stress_sh23" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 27.2416, 0.0749998, 18.8317)
+angular_damp = 0.0
+
+[node name="stress_sh24" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 26.2097, 0.0749998, 18.4184)
+angular_damp = 0.0
+
+[node name="stress_sh25" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 28.5081, 0.0749998, 19.3389)
+angular_damp = 0.0
+
+[node name="stress_sh26" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.514724, 0, -0.857356, 0, 1, 0, 0.857356, 0, -0.514724, 23.0634, 0.0749998, 23.8626)
+angular_damp = 0.0
+
+[node name="stress_sh27" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.514724, 0, -0.857356, 0, 1, 0, 0.857356, 0, -0.514724, 24.0778, 0.0749998, 22.1731)
+angular_damp = 0.0
+
+[node name="stress_sh28" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.514724, 0, -0.857356, 0, 1, 0, 0.857356, 0, -0.514724, 25.3782, 0.0749998, 20.0071)
+angular_damp = 0.0
+
+[node name="stress_sh29" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.514724, 0, -0.857356, 0, 1, 0, 0.857356, 0, -0.514724, 24.806, 0.0749998, 20.9601)
+angular_damp = 0.0
+
+[node name="stress_sh30" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 27.8024, 0.0749998, 23.955)
+angular_damp = 0.0
+
+[node name="stress_sh31" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 29.577, 0.0749998, 21.0189)
+angular_damp = 0.0
+
+[node name="stress_sh32" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 31.4064, 0.0749998, 21.7516)
+angular_damp = 0.0
+
+[node name="stress_sh33" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 33.7517, 0.0749998, 22.6909)
+angular_damp = 0.0
+
+[node name="stress_sh34" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 32.7197, 0.0749998, 22.2776)
+angular_damp = 0.0
+
+[node name="stress_sh35" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 35.0181, 0.0749998, 23.1981)
+angular_damp = 0.0
+
+[node name="stress_sh36" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 28.8713, 0.0749998, 25.635)
+angular_damp = 0.0
+
+[node name="stress_sh37" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 30.7007, 0.0749998, 26.3677)
+angular_damp = 0.0
+
+[node name="stress_sh38" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 33.046, 0.0749998, 27.307)
+angular_damp = 0.0
+
+[node name="stress_sh39" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 32.014, 0.0749998, 26.8937)
+angular_damp = 0.0
+
+[node name="stress_sh40" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.928317, 0, 0.371789, 0, 1, 0, -0.371789, 0, -0.928317, 34.3125, 0.0749998, 27.8142)
+angular_damp = 0.0
+
+[node name="stress_sh41" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.980357, 0, -0.19723, 0, 1, 0, 0.19723, 0, -0.980357, 36.3951, 0.0749998, 24.6833)
+angular_damp = 0.0
+
+[node name="stress_sh42" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.980357, 0, -0.19723, 0, 1, 0, 0.19723, 0, -0.980357, 38.327, 0.0749998, 24.2947)
+angular_damp = 0.0
+
+[node name="stress_sh43" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.980357, 0, -0.19723, 0, 1, 0, 0.19723, 0, -0.980357, 40.8038, 0.0749998, 23.7964)
+angular_damp = 0.0
+
+[node name="stress_sh44" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.980357, 0, -0.19723, 0, 1, 0, 0.19723, 0, -0.980357, 39.714, 0.0749998, 24.0156)
+angular_damp = 0.0
+
+[node name="stress_sh45" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.980357, 0, -0.19723, 0, 1, 0, 0.19723, 0, -0.980357, 42.1413, 0.0749998, 23.5273)
+angular_damp = 0.0
+
+[node name="stress_sh46" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.980357, 0, -0.19723, 0, 1, 0, 0.19723, 0, -0.980357, 38.3323, 0.0749998, 28.9323)
+angular_damp = 0.0
+
+[node name="stress_sh47" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.980357, 0, -0.19723, 0, 1, 0, 0.19723, 0, -0.980357, 40.2642, 0.0749998, 28.5436)
+angular_damp = 0.0
+
+[node name="stress_sh48" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.836755, 0, 0.547578, 0, 1, 0, -0.547578, 0, 0.836755, -44.6163, 0.0749998, -5.30055)
+angular_damp = 0.0
+
+[node name="stress_sh49" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.836755, 0, 0.547578, 0, 1, 0, -0.547578, 0, 0.836755, -43.6862, 0.0749998, -5.90925)
+angular_damp = 0.0
+
+[node name="stress_sh50" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.836755, 0, 0.547578, 0, 1, 0, -0.547578, 0, 0.836755, -45.7579, 0.0749998, -4.55351)
+angular_damp = 0.0
+
+[node name="stress_sh51" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, 29.8335, 0.0749998, -21.3019)
+angular_damp = 0.0
+
+[node name="stress_sh52" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, 27.9144, 0.0749998, -20.8543)
+angular_damp = 0.0
+
+[node name="stress_sh53" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, 25.454, 0.0749998, -20.2804)
+angular_damp = 0.0
+
+[node name="stress_sh54" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, 26.5366, 0.0749998, -20.5329)
+angular_damp = 0.0
+
+[node name="stress_sh55" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.988504, 0, 0.151192, 0, 1, 0, -0.151192, 0, -0.988504, 9.20779, 0.0749998, 30.418)
+angular_damp = 0.0
+
+[node name="stress_sh56" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, 27.7671, 0.0749998, -25.4895)
+angular_damp = 0.0
+
+[node name="stress_sh57" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, 25.848, 0.0749998, -25.0419)
+angular_damp = 0.0
+
+[node name="stress_sh58" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, 23.3876, 0.0749998, -24.468)
+angular_damp = 0.0
+
+[node name="stress_sh59" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, 24.4702, 0.0749998, -24.7205)
+angular_damp = 0.0
+
+[node name="stress_sh60" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, 22.059, 0.0749998, -24.1581)
+angular_damp = 0.0
+
+[node name="stress_sh61" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.988504, 0, 0.151192, 0, 1, 0, -0.151192, 0, -0.988504, 10.6563, 0.0749998, 30.6396)
+angular_damp = 0.0
+
+[node name="stress_sh62" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.988504, 0, 0.151192, 0, 1, 0, -0.151192, 0, -0.988504, 12.6042, 0.0749998, 30.9375)
+angular_damp = 0.0
+
+[node name="stress_sh63" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.988504, 0, 0.151192, 0, 1, 0, -0.151192, 0, -0.988504, 15.1016, 0.0749998, 31.3195)
+angular_damp = 0.0
+
+[node name="stress_sh64" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.988504, 0, 0.151192, 0, 1, 0, -0.151192, 0, -0.988504, 14.0027, 0.0749998, 31.1514)
+angular_damp = 0.0
+
+[node name="stress_sh65" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.988504, 0, 0.151192, 0, 1, 0, -0.151192, 0, -0.988504, 16.4502, 0.0749998, 31.5258)
+angular_damp = 0.0
+
+[node name="stress_sh66" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, -17.8624, 0.0749998, -23.8252)
+angular_damp = 0.0
+
+[node name="stress_sh67" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, -19.7815, 0.0749998, -23.3776)
+angular_damp = 0.0
+
+[node name="stress_sh68" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, -22.2419, 0.0749998, -22.8037)
+angular_damp = 0.0
+
+[node name="stress_sh69" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.973857, 0, 0.227161, 0, 1, 0, -0.227161, 0, 0.973857, -21.1593, 0.0749998, -23.0562)
+angular_damp = 0.0
+
+[node name="stress_sh70" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.356869, 0, 0.934155, 0, 1, 0, -0.934155, 0, 0.356869, -17.417, 0.0749998, 12.8706)
+angular_damp = 0.0
+
+[node name="stress_sh71" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.356869, 0, 0.934155, 0, 1, 0, -0.934155, 0, 0.356869, -13.2771, 0.0749998, 14.7767)
+angular_damp = 0.0
+
+[node name="stress_sh72" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.988504, 0, 0.151192, 0, 1, 0, -0.151192, 0, -0.988504, 19.7467, 0.0749998, 32.03)
+angular_damp = 0.0
+
+[node name="stress_sh73" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.988504, 0, 0.151192, 0, 1, 0, -0.151192, 0, -0.988504, 22.2441, 0.0749998, 32.4119)
+angular_damp = 0.0
+
+[node name="stress_sh74" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(-0.988504, 0, 0.151192, 0, 1, 0, -0.151192, 0, -0.988504, 21.1452, 0.0749998, 32.2439)
+angular_damp = 0.0
+
+[node name="stress_sh75" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -21.8667, 0.0749998, 16.4323)
+angular_damp = 0.0
+
+[node name="stress_sh76" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -20.1209, 0.0749998, 10.0547)
+angular_damp = 0.0
+
+[node name="stress_sh77" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -21.8058, 0.0749998, 11.0766)
+angular_damp = 0.0
+
+[node name="stress_sh78" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -23.9659, 0.0749998, 12.3869)
+angular_damp = 0.0
+
+[node name="stress_sh79" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -23.0155, 0.0749998, 11.8104)
+angular_damp = 0.0
+
+[node name="stress_sh80" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -25.1324, 0.0749998, 13.0944)
+angular_damp = 0.0
+
+[node name="stress_sh81" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -23.8519, 0.0749998, 16.2772)
+angular_damp = 0.0
+
+[node name="stress_sh82" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -25.5368, 0.0749998, 17.2992)
+angular_damp = 0.0
+
+[node name="stress_sh83" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -27.6969, 0.0749998, 18.6094)
+angular_damp = 0.0
+
+[node name="stress_sh84" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -26.7465, 0.0749998, 18.0329)
+angular_damp = 0.0
+
+[node name="stress_sh85" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -28.8634, 0.0749998, 19.3169)
+angular_damp = 0.0
+
+[node name="stress_sh86" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -27.1175, 0.0749998, 12.9393)
+angular_damp = 0.0
+
+[node name="stress_sh87" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -28.8024, 0.0749998, 13.9612)
+angular_damp = 0.0
+
+[node name="stress_sh88" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -30.9625, 0.0749998, 15.2715)
+angular_damp = 0.0
+
+[node name="stress_sh89" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -30.0121, 0.0749998, 14.695)
+angular_damp = 0.0
+
+[node name="stress_sh90" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.855011, 0, 0.518609, 0, 1, 0, -0.518609, 0, 0.855011, -32.129, 0.0749998, 15.979)
+angular_damp = 0.0
+
+[node name="stress_sh91" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.431456, 0, 0.902134, 0, 1, 0, -0.902134, 0, 0.431456, -30.878, 0.0749998, 19.5251)
+angular_damp = 0.0
+
+[node name="stress_sh92" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.431456, 0, 0.902134, 0, 1, 0, -0.902134, 0, 0.431456, -31.7282, 0.0749998, 21.3028)
+angular_damp = 0.0
+
+[node name="stress_sh93" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.431456, 0, 0.902134, 0, 1, 0, -0.902134, 0, 0.431456, -32.8182, 0.0749998, 23.582)
+angular_damp = 0.0
+
+[node name="stress_sh94" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.431456, 0, 0.902134, 0, 1, 0, -0.902134, 0, 0.431456, -32.3386, 0.0749998, 22.5791)
+angular_damp = 0.0
+
+[node name="stress_sh95" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.431456, 0, 0.902134, 0, 1, 0, -0.902134, 0, 0.431456, -33.4069, 0.0749998, 24.8127)
+angular_damp = 0.0
+
+[node name="stress_sh96" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.431456, 0, 0.902134, 0, 1, 0, -0.902134, 0, 0.431456, -35.4383, 0.0749998, 18.5202)
+angular_damp = 0.0
+
+[node name="stress_sh97" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.431456, 0, 0.902134, 0, 1, 0, -0.902134, 0, 0.431456, -36.2885, 0.0749998, 20.298)
+angular_damp = 0.0
+
+[node name="stress_sh98" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.431456, 0, 0.902134, 0, 1, 0, -0.902134, 0, 0.431456, -37.3786, 0.0749998, 22.5772)
+angular_damp = 0.0
+
+[node name="stress_sh99" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.431456, 0, 0.902134, 0, 1, 0, -0.902134, 0, 0.431456, -36.8989, 0.0749998, 21.5743)
+angular_damp = 0.0
+
+[node name="stress_sh100" parent="." instance=ExtResource("5_hc77w")]
+transform = Transform3D(0.431456, 0, 0.902134, 0, 1, 0, -0.902134, 0, 0.431456, -37.9672, 0.0749998, 23.8079)
+angular_damp = 0.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0)

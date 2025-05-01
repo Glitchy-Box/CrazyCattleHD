@@ -1,0 +1,94 @@
+[gd_scene load_steps=15 format=3 uid="uid://eh6mr1x6bsam"]
+
+[ext_resource type="Script" uid="uid://d1hbd2inwmf46" path="res://cc3dm.gd" id="1_6iypd"]
+[ext_resource type="PackedScene" uid="uid://cjcrsqr7uqyry" path="res://assets/map.tscn" id="5_jka67"]
+[ext_resource type="PackedScene" uid="uid://ckk7gi2eovncl" path="res://npsheep.tscn" id="9_4arys"]
+[ext_resource type="PackedScene" uid="uid://c8fhsisy8tfpd" path="res://assets/ramp.tscn" id="10_6iypd"]
+[ext_resource type="PackedScene" uid="uid://bx47twud8sb7o" path="res://assets/playerv2.tscn" id="10_tereu"]
+
+[sub_resource type="Gradient" id="Gradient_noarx"]
+offsets = PackedFloat32Array(0.641509, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a0tk4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r3fl7"]
+seamless = true
+color_ramp = SubResource("Gradient_noarx")
+noise = SubResource("FastNoiseLite_a0tk4")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a0tk4"]
+sky_top_color = Color(0.6336, 0.80586, 0.99, 1)
+sky_cover = SubResource("NoiseTexture2D_r3fl7")
+
+[sub_resource type="Sky" id="Sky_r3fl7"]
+sky_material = SubResource("ProceduralSkyMaterial_a0tk4")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_jka67"]
+background_mode = 2
+sky = SubResource("Sky_r3fl7")
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4arys"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4arys"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6iypd"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_6iypd")
+metadata/size = 50
+metadata/info = {
+"version": "Graphics Pre-Alpha"
+}
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.828207, -0.278889, 0.486101, 1.80338e-08, 0.867384, 0.49764, -0.560422, 0.412149, -0.718373, 2.50573, 1.53688, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jka67")
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70668, 2.11715)
+physics_material_override = SubResource("PhysicsMaterial_4arys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
+shape = SubResource("BoxShape3D_4arys")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D3"]
+mesh = SubResource("BoxMesh_6iypd")
+
+[node name="bounce" type="Area3D" parent="RigidBody3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3/bounce"]
+shape = SubResource("BoxShape3D_4arys")
+
+[node name="Ramp" parent="." instance=ExtResource("10_6iypd")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -1.67376, -6.79109, 8.60111)
+
+[node name="Ramp2" parent="." instance=ExtResource("10_6iypd")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -0.880681, -0.183716, 35.7212)
+
+[node name="Map" parent="." instance=ExtResource("5_jka67")]
+metadata/size = 100
+metadata/amount = 10
+
+[node name="playersh" parent="." instance=ExtResource("10_tereu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0859025, 0.0749998, -5.21242)
+center_of_mass = Vector3(0, 0, 0)
+
+[node name="testsh" parent="." instance=ExtResource("9_4arys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.75333, 0.0749998, -2.5099)
+angular_damp = 0.0
+
+[node name="testsh2" parent="." instance=ExtResource("9_4arys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.83122, 0.0749998, 4.08566)
+angular_damp = 0.0
+
+[node name="testsh3" parent="." instance=ExtResource("9_4arys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.35087, 0.0749998, 5.9469)
+angular_damp = 0.0
